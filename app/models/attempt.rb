@@ -2,7 +2,7 @@ class Attempt < ActiveRecord::Base
 
   belongs_to :round
   belongs_to :card
-  belongs_to :deck, through: :card
-  belongs_to :user, through: :round
+  has_one :deck, through: :card
+  has_one :user, through: :round
 
 end

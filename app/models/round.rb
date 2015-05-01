@@ -5,19 +5,28 @@ class Round < ActiveRecord::Base
   has_many   :cards, through: :attempts
   has_many   :attempts
 
-  def to_s
-    "#{self.updated_at} - #{self.deck.subject} - " +
-    "Correct Guesses: #{correct_guesses}, " +
-    "Incorrect Guesses: #{incorrect_guesses}, " +
-    "#{correct_guesses/(correct_guesses+incorrect_guesses)}% correct"
-  end
-
   def correct_guesses
     self.attempts.where(correct: true).count
   end
 
   def incorrect_guesses
     self.attempts.where(correct: false).count
+  end
+
+  def to_s
+    correct = correct_guesses
+    incorrect = incorrect_guesses
+    total = correct+incorrect
+    output_string = "#{self.updated_at} - #{self.deck.subject}"
+    if total > 0
+      percentage = (100*correct.to_f/(correct+incorrect)).round(2)
+      return output_string +
+        " - Correct Guesses: #{correct}, " +
+        "Incorrect Guesses: #{incorrect}, " +
+        "#{percentage}% correct"
+    else
+      return output_string + " - no guesses made"
+    end
   end
 
 end
