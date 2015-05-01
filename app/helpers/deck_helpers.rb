@@ -6,7 +6,7 @@ helpers do
   end
 
   def get_new_card
-    Card.find(session[:card_ids].shuffle.pop)
+    Card.find(session[:card_ids].pop)
   end
 
 end

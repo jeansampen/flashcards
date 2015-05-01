@@ -12,7 +12,7 @@ get '/decks/:id' do
   round = Round.create(deck_id: params[:id],
     user_id: session[:user_id])
   session[:round_id] = round.id
-  session[:card_ids] = Deck.find(params[:id]).cards.pluck(:id)
+  session[:card_ids] = Deck.find(params[:id]).cards.pluck(:id).shuffle
   redirect "/rounds/#{round.id}"
 end
 
@@ -22,6 +22,7 @@ get '/rounds/:id' do
     session[:round_id] = nil
     redirect '/stats'
   elsif authenticate_round(params[:id])
+    puts "card count: #{session[:card_ids].count}"
     @current_card = get_new_card
     session[:current_card] = {id: @current_card.id,
       question: @current_card.question, answer: @current_card.answer}
@@ -32,19 +33,17 @@ get '/rounds/:id' do
   end
 end
 
-# post '/attempts' do
-#   round = Round.find(session[:round_id])
-#   @correctness = ()
-#   round.attempts.create(card_id: session[:current_card][:id],
-#     )
-#   # creates an attempt
-#   # @correctness = attempt.correct
-#   erb :'cards/result'
-# end
+post '/attempts' do
+  @correctness = params[:answer] == session[:current_card][:answer]
+  round = Round.find(session[:round_id])
+  round.attempts.create(card_id: session[:current_card][:id],
+    correct: @correctness)
+  erb :'cards/results'
+end
 
 get '/stats' do
-  # displays all rounds w/ all stats
-  erb :stats
+  @rounds = Round.all.order(updated_at: :desc)
+  erb :'stats/show'
 end
 
 
