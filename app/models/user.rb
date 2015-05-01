@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  include BCrypt
 
   has_many :rounds
   has_many :decks
@@ -12,14 +13,13 @@ class User < ActiveRecord::Base
     self.password_hash = Password.create(new_password)
   end
 
-  def self.authenticate(email,password_guess)
-    @user = User.find_by_email(email)
-    if @user && @user.password == password_guess
-      @user
+  def self.authenticate(login_hash)
+    @user = User.find_by_username(login_hash[:username])
+    if @user && @user.password == login_hash[:password]
+      @user.id
     else
       nil
     end
   end
-
 
 end
