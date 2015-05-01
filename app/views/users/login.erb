@@ -1,0 +1,17 @@
+<div class="banner">
+  Welcome
+</div>
+
+<div class="content">
+  <%= @message if @message %>
+
+  <form action="/login" method="post">
+    Username: <input type="text" name="user[username]"><br><br>
+    Password: <input type="password" name="user[password]"><br><br>
+    <input type="submit" value="Login">
+  </form>
+  <br><br><hr><br><br>
+
+  Have we met before? If not <a href="/users/new">say hi</a>.
+
+</div>
