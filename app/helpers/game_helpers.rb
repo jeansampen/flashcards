@@ -5,7 +5,7 @@ helpers do
   end
 
   def authenticate_round(round_id)
-    session[:round_id] == round_id
+    session[:round_id] == round_id.to_i
   end
 
 end

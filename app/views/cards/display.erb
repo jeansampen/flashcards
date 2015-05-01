@@ -5,11 +5,13 @@
 <div id="content">
 
 <%= @current_card.question  %>
-
+<br />
+<form method="post" action="/attempts">
+<input type="text" name="answer">
+<input type="submit" value="Submit">
+</form>
 
 </div>
-
-
 
 
 
