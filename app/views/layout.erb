@@ -19,7 +19,7 @@
 </head>
 <body>
   <% if logged_in? %>
-    Hello, <%= current_user.name %>! . . . <a href="/logout">logout</a><br><hr>
+    Hello, <%= current_user.username %>! . . . <a href="/logout">logout</a><br><hr>
   <% end %>
   <div class="container">
     <%= yield %>
