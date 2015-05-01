@@ -1,0 +1,19 @@
+<div id="banner">
+  <%= @current_subject %>
+</div>
+
+<div id="content">
+<div id='result_message'>
+<%= erb :'partials/_result_message', :locals => {:correctness => @correctness}%>
+</div>
+<%= @current_card.question %>
+<br>
+<%= @current_card.answer %>
+<br>
+<p>Your answer was</p>
+<%= @last_guess %>
+
+<form method='GET' action='/rounds/<%=session[:round_id]%>'>
+<input type='submit' value='Next Question'>
+</form>
+</div>
