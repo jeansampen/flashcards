@@ -8,7 +8,4 @@ helpers do
     session[:round_id] == round_id.to_i
   end
 
-  def correct?(guess)
-    guess ==
-
 end

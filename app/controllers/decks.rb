@@ -23,7 +23,7 @@ get '/rounds/:id' do
     redirect '/stats'
   elsif authenticate_round(params[:id])
     @current_card = get_new_card
-    sesson[:current_card] = {id: @current_card.id,
+    session[:current_card] = {id: @current_card.id,
       question: @current_card.question, answer: @current_card.answer}
     @current_subject = Round.find(params[:id]).deck.subject
     erb :'cards/display'
