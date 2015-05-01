@@ -18,6 +18,11 @@
   <title></title>
 </head>
 <body>
-  <%= yield %>
+  <% if logged_in? %>
+    Hello, <%= current_user.name %>! . . . <a href="/logout">logout</a><br><hr>
+  <% end %>
+  <div class="container">
+    <%= yield %>
+  </div>
 </body>
 </html>
