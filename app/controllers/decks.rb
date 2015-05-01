@@ -32,15 +32,15 @@ get '/rounds/:id' do
   end
 end
 
-post '/attempts' do
-  round = Round.find(session[:round_id])
-  @correctness = ()
-  round.attempts.create(card_id: sesson[:current_card][:id],
-    )
-  # creates an attempt
-  # @correctness = attempt.correct
-  erb :'cards/result'
-end
+# post '/attempts' do
+#   round = Round.find(session[:round_id])
+#   @correctness = ()
+#   round.attempts.create(card_id: session[:current_card][:id],
+#     )
+#   # creates an attempt
+#   # @correctness = attempt.correct
+#   erb :'cards/result'
+# end
 
 get '/stats' do
   # displays all rounds w/ all stats
