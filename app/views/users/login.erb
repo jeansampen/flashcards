@@ -1,9 +1,9 @@
 <div class="banner">
-  Welcome
+  <h3>Welcome</h3>
 </div>
 
 <div class="content">
-  <%= @message if @message %>
+  <h5 style="color:red"><%= @message if @message %></h5>
 
   <form action="/login" method="post">
     Username: <input type="text" name="user[username]"><br><br>
