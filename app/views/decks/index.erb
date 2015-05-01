@@ -1,0 +1,11 @@
+<div id="banner">
+  Welcome!!!
+</div>
+
+
+<div id="content">
+  <% @decks.each do |deck| %>
+    <a href='/decks/<%=deck.id%>'><%=deck.subject%></a>
+    <br>
+  <% end %>
+</div>
