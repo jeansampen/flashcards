@@ -1,6 +1,6 @@
 class CreateRounds < ActiveRecord::Migration
   def change
-    create_table :users do |t|
+    create_table :rounds do |t|
       t.integer :deck_id
       t.integer :user_id
 
