@@ -1,13 +1,18 @@
-<div class="banner">
-  <h3>Welcome</h3>
-</div>
 
-<div class="content">
+
+<div class="container-fluid">
   <%= @message if @message %>
+    <div class="row">
+      <div class="col-md-5">
+        <form class='form-signin' action="/users" method="post">
+          <h2 class='form-signin-heading'>Create an account</h2>
+            <%= erb :"partials/_login_form" %>
+          <button class="btn btn-lg btn-primary btn-block" type="submit">Let's be friends!</button>
+          <p class="help-block">back to <a href="/login">sign-in</a></p>
+        </form>
+      </div>
 
-  <form action="/users" method="post">
-    Username: <input type="text" name="user[username]"><br><br>
-    Password: <input type="password" name="user[password]"><br><br>
-    <input type="submit" value="Let's be friends!">
-  </form>
+    </div>
+  </div>
+
 </div>
