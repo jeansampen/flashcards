@@ -1,8 +1,8 @@
-<div class="banner">
+<!-- <div class="banner">
   <h3>Welcome</h3>
-</div>
+</div> -->
 
-<div class="content">
+<!-- <div class="content">
   <h5 style="color:red"><%= @message if @message %></h5>
 
   <form action="/login" method="post">
@@ -13,5 +13,26 @@
   <br><br><hr><br><br>
 
   Have we met before? If not <a href="/users/new">say hi</a>.
+
+</div> -->
+
+<div class="content">
+  <h5 style="color:red"><%= @message if @message %></h5>
+
+<div class="container-fluid">
+<!--     Kenny's Log-ins! -->
+    <div class="row">
+      <div class="col-md-5">
+        <form class='form-signin' action="/login" method="post">
+          <h2 class='form-signin-heading'>Welcome</h2>
+            <%= erb :"partials/_login_form" %>
+          <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+<!--           <button type="submit" class="btn btn-default">Submit</button> -->
+          <p class="help-block">Have we met before? If not <a href="/users/new">say hi</a></p>
+        </form>
+      </div>
+
+    </div>
+  </div>
 
 </div>
