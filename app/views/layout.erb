@@ -23,7 +23,16 @@
 </head>
 <body>
   <% if logged_in? %>
-    Hello, <%= current_user.username %>! . . . <a href="/logout">logout</a><br><hr>
+    <nav class="navbar navbar-inverse" role="navigation">
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-left">
+            <li><h5 class="navbar-text" >Hello, <%= current_user.username %></h5></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="/logout">Logout</a></li>
+        </ul>
+      </div>
+    </nav>
   <% end %>
   <div class="container">
     <%= yield %>

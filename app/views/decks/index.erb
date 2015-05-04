@@ -1,11 +1,9 @@
-<div id="banner">
-  Welcome!!!
-</div>
-
-
-<div id="content">
-  <% @decks.each do |deck| %>
-    <a href='/decks/<%=deck.id%>'><%=deck.subject%></a>
-    <br>
-  <% end %>
+<div class="container">
+  <div class="jumbotron">
+    <h1>Welcome!</h1>
+    <h3>Select a Deck to play with:</h3><br>
+    <% @decks.each do |deck| %>
+      <p><a class="btn btn-primary btn-lg" href='/decks/<%=deck.id%>' role="button"><%=deck.subject%></a></p>
+    <% end %>
+  </div>
 </div>
