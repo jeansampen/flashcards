@@ -1,19 +1,23 @@
-<div id="banner">
-  <%= @current_subject %>
-</div>
 
-<div id="content">
-<div id='result_message'>
-<%= erb :'partials/_result_message', :locals => {:correctness => @correctness}%>
-</div>
-<%= session[:current_card][:question] %>
-<br>
-<%= session[:current_card][:answer] %>
-<br>
-<!-- <p>Your answer was</p>
-<%= @last_guess %> -->
-
-<form method='GET' action='/rounds/<%=session[:round_id]%>'>
-<input type='submit' value='Next Question'>
-</form>
+<div class="container">
+  <div class="jumbotron">
+    <h1 class="text-center"><%= @current_subject %></h1>
+    <h3 class="text-center">
+      <%= erb :'partials/_result_message', :locals => {:correctness => @correctness}%>
+    </h3><br><br>
+    <div class="row">
+      <div class="col-lg-6">
+        <p><%= session[:current_card][:question] %></p>
+      </div>
+      <div class="col-lg-6">
+        <p><%= session[:current_card][:answer] %></p>
+      </div>
+    </div>
+    <nav>
+      <ul class="pager">
+        <li class="previous"><a href="/stats"><span aria-hidden="true">&larr;</span> Quit</a></li>
+        <li class="next"><a href="/rounds/<%=session[:round_id]%>">Next Card <span aria-hidden="true">&rarr;</span></a></li>
+      </ul>
+    </nav>
+  </div>
 </div>
